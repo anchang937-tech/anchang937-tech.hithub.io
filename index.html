@@ -1,0 +1,2533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代际桥梁 - 连接时光，交换智慧</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF9F45',
+                        secondary: '#4A90E2',
+                        accent: '#FFD166',
+                        success: '#06D6A0',
+                        dark: '#333333',
+                        light: '#F5F5F5'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            @apply bg-primary text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1;
+        }
+        
+        .btn-secondary {
+            @apply bg-white text-primary border-2 border-primary font-medium py-3 px-6 rounded-lg shadow-md hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1;
+        }
+        
+        .card {
+            @apply bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
+        }
+        
+        .section-padding {
+            @apply py-16 md:py-24;
+        }
+        
+        .font-size-control {
+            @apply inline-flex items-center justify-center w-8 h-8 rounded-full bg-light text-dark hover:bg-primary hover:text-white transition-colors duration-300;
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- 字体大小控制 -->
+    <div class="fixed top-4 right-4 z-50 bg-white rounded-full shadow-md p-1 flex items-center">
+        <button id="font-decrease" class="font-size-control">
+            <i class="fas fa-minus text-sm"></i>
+        </button>
+        <button id="font-reset" class="font-size-control mx-1">
+            <i class="fas fa-font text-sm"></i>
+        </button>
+        <button id="font-increase" class="font-size-control">
+            <i class="fas fa-plus text-sm"></i>
+        </button>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full bg-white shadow-md z-40 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                    <span class="text-primary text-2xl font-bold">代际桥梁</span>
+                </a>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="font-medium hover:text-primary transition-colors">首页</a>
+                    <a href="#problems" class="font-medium hover:text-primary transition-colors">问题与挑战</a>
+                    <a href="#solutions" class="font-medium hover:text-primary transition-colors">解决方案</a>
+                    <a href="#impact" class="font-medium hover:text-primary transition-colors">深远意义</a>
+                    <a href="#join" class="btn-primary">加入我们</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- 移动端导航菜单 -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="#home" class="block py-2 font-medium hover:text-primary transition-colors">首页</a>
+                <a href="#problems" class="block py-2 font-medium hover:text-primary transition-colors">问题与挑战</a>
+                <a href="#solutions" class="block py-2 font-medium hover:text-primary transition-colors">解决方案</a>
+                <a href="#impact" class="block py-2 font-medium hover:text-primary transition-colors">深远意义</a>
+                <a href="#join" class="block py-2 mt-2 btn-primary text-center">加入我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏区域 -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-4 text-shadow">
+                        连接时光，<br>
+                        <span class="text-primary">交换智慧</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-500 mb-8 max-w-lg">
+                        Connecting Generations,<br>
+                        <span class="text-primary">Exchanging Wisdom</span>
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 mb-2 max-w-lg">
+                        一个跨越数字鸿沟、消除代际隔离的温暖社区。在这里，陪伴与成长是双向的礼物。
+                    </p>
+                    <p class="text-base md:text-lg text-gray-500 mb-8 max-w-lg">
+                        A warm community bridging the digital divide and eliminating intergenerational isolation. Here, companionship and growth are mutual gifts.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#problems" class="btn-primary text-center">
+                            <i class="fas fa-info-circle mr-2"></i>了解问题与挑战
+                        </a>
+                        <a href="#solutions" class="btn-secondary text-center">
+                            <i class="fas fa-lightbulb mr-2"></i>探索解决方案
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/b1029eefe3e743f5974ad2d6b5335307~tplv-a9rns2rl98-image.image?rcl=202512122252343003DF1ABCE6D198F374&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1768143214&x-signature=FSh2J7VxKcM%2BgppErYky04CQhIA%3D" 
+                         alt="代际桥梁概念图" 
+                         class="w-full h-auto rounded-xl shadow-xl mb-6">
+                    
+                    <!-- 添加代际互动图片展示 -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://p11-doubao-search-sign.byteimg.com/labis/image/ef80ef4f0ef0ccbeafbf637679393c17~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=adClM9%2BdUZoA2ZcT%2BAfUN%2F1PiME%3D" 
+                             alt="大学生教老人使用手机" 
+                             class="w-full h-40 object-cover rounded-lg shadow-md">
+                        <img src="https://p11-doubao-search-sign.byteimg.com/labis/59b6c332d44b272616424da61960736f~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=ev035YN1I3JradkFll6CtePvL4w%3D" 
+                             alt="大学生志愿者帮助老人学习手机" 
+                             class="w-full h-40 object-cover rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色功能展示区 -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">我们的特色功能</h2>
+            <p class="text-lg text-center text-gray-500 mb-12">Our Featured Functions</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 双向情感陪伴 -->
+                <div class="card">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-comments text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-center mb-2">双向情感陪伴</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">Bidirectional Emotional Companionship</p>
+                    <p class="text-gray-700 text-center">
+                        对抗孤独与焦虑，建立真诚的情感连接，让温暖在代际间流动。
+                    </p>
+                    <p class="text-sm text-gray-500 text-center mt-2">
+                        Combating loneliness and anxiety, building genuine emotional connections, and letting warmth flow between generations.
+                    </p>
+                </div>
+                
+                <!-- 知识技能交换 -->
+                <div class="card">
+                    <div class="w-16 h-16 bg-secondary bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-exchange-alt text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-center mb-2">知识技能交换</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">Knowledge and Skill Exchange</p>
+                    <p class="text-gray-700 text-center">
+                        数字反哺与人生指导相结合，互相学习共同成长，实现智慧传承。
+                    </p>
+                    <p class="text-sm text-gray-500 text-center mt-2">
+                        Combining digital support with life guidance, learning from each other, growing together, and achieving wisdom inheritance.
+                    </p>
+                </div>
+                
+                <!-- 跨代社群 -->
+                <div class="card">
+                    <div class="w-16 h-16 bg-success bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-users text-2xl text-success"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-center mb-2">跨代社群</h3>
+                    <p class="text-sm text-gray-500 text-center mb-4">Cross-Generational Community</p>
+                    <p class="text-gray-700 text-center">
+                        构建支持性社交网络，打破代际隔阂，创造包容温暖的社区。
+                    </p>
+                    <p class="text-sm text-gray-500 text-center mt-2">
+                        Building supportive social networks, breaking down intergenerational barriers, and creating an inclusive and warm community.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 代际互助图片展示 -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="https://p26-doubao-search-sign.byteimg.com/mosaic-legacy/6ec4000dbdf73b2f73a9~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=Lv8raGVbsXTet7X5AK1%2B542cY8E%3D" 
+                         alt="大学生教老人使用智能手机" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold mb-2">数字反哺</h4>
+                        <p class="text-gray-700 text-sm">中国大学生志愿者耐心教导老年人使用现代科技产品，跨越数字鸿沟</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="https://p26-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/782582048287621196~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781194555&x-signature=HCaOfdM0Wgqf8e%2BBe7TcpwW3M5Q%3D" 
+                         alt="爷孙合作捕鱼撒网" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold mb-2">传统技艺传承</h4>
+                        <p class="text-gray-700 text-sm">中国老年人与中年人共同参与传统技艺活动，传承和弘扬中华传统文化</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-6w9my0ksvp/2b7273e0694a4dd98115155432968c76~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=Q3vR6LhpDmxqT4vtQG4R1h%2FoUy0%3D" 
+                         alt="代际共读活动" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold mb-2">文化交流</h4>
+                        <p class="text-gray-700 text-sm">通过代际共读等活动，促进中国老年人与年轻人的文化交流</p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- 问题与挑战页面 -->
+    <section id="problems" class="section-padding bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">我们关注的问题</h2>
+            <p class="text-lg text-center text-gray-500 mb-4">Issues We Focus On</p>
+            <p class="text-lg text-center text-gray-700 mb-12 max-w-3xl mx-auto">
+                代际之间的数字鸿沟和情感隔阂是当代社会面临的重要挑战，让我们一起了解这些问题的具体表现。
+            </p>
+            <p class="text-base text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+                The digital divide and emotional barriers between generations are important challenges facing contemporary society. Let's understand the specific manifestations of these issues together.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- 老年人面临的问题 -->
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-primary bg-opacity-10 p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-user-friends text-xl text-white"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold">老年人面临的问题</h3>
+                                <p class="text-gray-500">Challenges Faced by the Elderly</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="mb-6">
+                                <h4 class="text-xl font-bold mb-1 flex items-center">
+                                    <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                                    挑战
+                                </h4>
+                                <p class="text-sm text-gray-500 mb-3">Challenges</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-primary mt-1.5 mr-2"></i>
+                                        <span><strong>心理孤独：</strong>子女离家，缺乏日常情感交流，价值感缺失</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-primary mt-1.5 mr-2"></i>
+                                        <span><strong>数字鸿沟：</strong>对扫码支付、线上挂号等无所适从，产生被抛弃感和社交孤立</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 flex items-center">
+                                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                    优势资源
+                                </h4>
+                                <p class="text-sm text-gray-500 mb-3">Advantages and Resources</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-primary mt-1.5 mr-2"></i>
+                                        <span><strong>丰富的人生阅历：</strong>可对生活、学业、价值观提供指导</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-primary mt-1.5 mr-2"></i>
+                                        <span><strong>无条件的关爱：</strong>提供类似祖辈的、不带有评判性的情感锚点与归属感</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 青年人面临的问题 -->
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-secondary bg-opacity-10 p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-user-graduate text-xl text-white"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold">青年人面临的问题</h3>
+                                <p class="text-gray-500">Challenges Faced by Young People</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="mb-6">
+                                <h4 class="text-xl font-bold mb-1 flex items-center">
+                                    <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                                    挑战
+                                </h4>
+                                <p class="text-sm text-gray-500 mb-3">Challenges</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-secondary mt-1.5 mr-2"></i>
+                                        <span><strong>成长迷茫：</strong>在学业、职业、人际关系上感到困惑与焦虑，缺乏长远视角</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-secondary mt-1.5 mr-2"></i>
+                                        <span><strong>竞争压力：</strong>快节奏、高成本生活带来的疲惫与不安，缺乏非功利性支持网络</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 flex items-center">
+                                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                    优势资源
+                                </h4>
+                                <p class="text-sm text-gray-500 mb-3">Advantages and Resources</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-secondary mt-1.5 mr-2"></i>
+                                        <span><strong>数字素养：</strong>熟悉电子设备，能通过"数字反哺"帮助老年人</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-circle text-xs text-secondary mt-1.5 mr-2"></i>
+                                        <span><strong>新鲜陪伴：</strong>简单的问候、耐心的倾听，就能带来巨大的情感慰藉</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 拼图效果展示 -->
+            <div class="mt-12 bg-white p-8 rounded-xl shadow-lg">
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+                    <div class="text-center lg:text-right">
+                        <div class="relative w-40 h-40 mx-auto lg:mx-0 mb-4">
+                            <img src="https://p11-doubao-search-sign.byteimg.com/labis/59b6c332d44b272616424da61960736f~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=ev035YN1I3JradkFll6CtePvL4w%3D" 
+                                 alt="中国老人学习使用手机" 
+                                 class="w-full h-full object-cover rounded-full border-4 border-primary">
+                        </div>
+                        <h4 class="text-xl font-bold">中国老年人</h4>
+                        <p class="text-sm text-gray-500">Chinese Elderly</p>
+                    </div>
+                    
+                    <div class="text-4xl font-bold text-gray-400">+</div>
+                    
+                    <div class="text-center lg:text-left">
+                        <div class="relative w-40 h-40 mx-auto lg:mx-0 mb-4">
+                            <img src="https://p11-doubao-search-sign.byteimg.com/labis/image/ef80ef4f0ef0ccbeafbf637679393c17~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=adClM9%2BdUZoA2ZcT%2BAfUN%2F1PiME%3D" 
+                                 alt="中国大学生教老人使用手机" 
+                                 class="w-full h-full object-cover rounded-full border-4 border-secondary">
+                        </div>
+                        <h4 class="text-xl font-bold">中国大学生</h4>
+                        <p class="text-sm text-gray-500">Chinese College Students</p>
+                    </div>
+                    
+                    <div class="text-4xl font-bold text-gray-400">=</div>
+                    
+                    <div class="text-center">
+                        <div class="relative w-40 h-40 mx-auto mb-4">
+                            <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-tjoges91tu/60334ec5e5609a3748a8724ed38b9bd2~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781104931&x-signature=G%2B%2FonJu8obBQqBRGOQ%2B75gZSRd8%3D" 
+                                 alt="中国代际交流活动" 
+                                 class="w-full h-full object-cover rounded-full border-4 border-gradient-to-r from-primary to-secondary">
+                        </div>
+                        <h4 class="text-xl font-bold">1+1&gt;2 的和谐互惠</h4>
+                        <p class="text-sm text-gray-500">Harmonious Reciprocity</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-2xl font-bold text-primary">双向情感陪伴 + 知识技能交换 = 代际共赢</p>
+                    <p class="text-base text-gray-500 mt-2">Bidirectional Emotional Companionship + Knowledge Exchange = Intergenerational Win-Win</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案页面 -->
+    <section id="solutions" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">我们的解决方案</h2>
+            <p class="text-lg text-center text-gray-500 mb-4">Our Solutions</p>
+            <p class="text-lg text-center text-gray-700 mb-6 max-w-3xl mx-auto">
+                Genbond项目通过创新的方法，连接不同代际的人群，实现知识与情感的双向交流。
+            </p>
+            <p class="text-base text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+                The Genbond project connects people of different generations through innovative methods to achieve bidirectional exchange of knowledge and emotions.
+            </p>
+            
+            <!-- 核心流程 -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-2">Genbond项目核心流程</h3>
+                <p class="text-base text-center text-gray-500 mb-8">Core Process of the Genbond Project</p>
+                
+                <div class="relative">
+                    <!-- 连接线 -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                        <!-- 步骤1 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-white text-xl font-bold">1</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-1 text-center">注册与建档</h4>
+                            <p class="text-sm text-gray-500 text-center mb-2">Registration and Profile Creation</p>
+                            <p class="text-gray-700 text-center">填写兴趣、需求与技能</p>
+                            <p class="text-sm text-gray-500 text-center mt-1">Fill in interests, needs, and skills</p>
+                        </div>
+                        
+                        <!-- 步骤2 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-white text-xl font-bold">2</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-1 text-center">智能匹配</h4>
+                            <p class="text-sm text-gray-500 text-center mb-2">Intelligent Matching</p>
+                            <p class="text-gray-700 text-center">根据档案推荐伙伴或活动</p>
+                            <p class="text-sm text-gray-500 text-center mt-1">Recommend partners or activities based on profiles</p>
+                        </div>
+                        
+                        <!-- 步骤3 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-white text-xl font-bold">3</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-1 text-center">参与互动</h4>
+                            <p class="text-sm text-gray-500 text-center mb-2">Participate in Interactions</p>
+                            <p class="text-gray-700 text-center">参加线上线下丰富活动</p>
+                            <p class="text-sm text-gray-500 text-center mt-1">Participate in rich online and offline activities</p>
+                        </div>
+                        
+                        <!-- 步骤4 -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-white text-xl font-bold">4</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-1 text-center">分享反馈</h4>
+                            <p class="text-sm text-gray-500 text-center mb-2">Share and Feedback</p>
+                            <p class="text-gray-700 text-center">分享故事，优化体验</p>
+                            <p class="text-sm text-gray-500 text-center mt-1">Share stories and optimize experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 主要活动形式 -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-2">主要活动形式</h3>
+                <p class="text-base text-center text-gray-500 mb-8">Main Activity Forms</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- 数字门诊 -->
+                    <div class="card">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-mobile-alt text-2xl text-secondary"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-1">数字门诊</h4>
+                        <p class="text-sm text-gray-500 text-center mb-2">Digital Clinic</p>
+                        <p class="text-gray-700 text-center">
+                            年轻人一对一辅导老年人使用智能手机解决日常难题
+                        </p>
+                        <p class="text-sm text-gray-500 text-center mt-1">
+                            Young people provide one-on-one guidance to elderly people on using smartphones to solve daily problems
+                        </p>
+                    </div>
+                    
+                    <!-- 人生茶话会 -->
+                    <div class="card">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-coffee text-2xl text-primary"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-1">人生茶话会</h4>
+                        <p class="text-sm text-gray-500 text-center mb-2">Life Story Tea Party</p>
+                        <p class="text-gray-700 text-center">
+                            老年人作为主讲人，分享特定主题的人生故事与智慧
+                        </p>
+                        <p class="text-sm text-gray-500 text-center mt-1">
+                            Elderly people as speakers, sharing life stories and wisdom on specific topics
+                        </p>
+                    </div>
+                    
+                    <!-- 共学小组 -->
+                    <div class="card">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-book text-2xl text-success"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-1">共学小组</h4>
+                        <p class="text-sm text-gray-500 text-center mb-2">Co-learning Group</p>
+                        <p class="text-gray-700 text-center">
+                            一起学习摄影、书法、短视频剪辑等新技能
+                        </p>
+                        <p class="text-sm text-gray-500 text-center mt-1">
+                            Learning new skills together such as photography, calligraphy, and short video editing
+                        </p>
+                    </div>
+                    
+                    <!-- 长期伙伴 -->
+                    <div class="card">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-handshake text-2xl text-purple-500"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-1">长期伙伴</h4>
+                        <p class="text-sm text-gray-500 text-center mb-2">Long-term Partners</p>
+                        <p class="text-gray-700 text-center">
+                            经过培训和匹配，建立长期、稳定的双向陪伴关系
+                        </p>
+                        <p class="text-sm text-gray-500 text-center mt-1">
+                            After training and matching, establish long-term, stable bidirectional companionship relationships
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 六周线下活动安排表 -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-2">六周线下活动安排表</h3>
+                <p class="text-base text-gray-500 mb-8">Six-Week Offline Activity Schedule</p>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <table class="w-full">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th class="py-4 px-6 text-left">周次</th>
+                                <th class="py-4 px-6 text-left">活动主题</th>
+                                <th class="py-4 px-6 text-left">活动内容</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-6 font-medium">第1周</td>
+                                <td class="py-4 px-6 font-medium">启动仪式与破冰茶话会</td>
+                                <td class="py-4 px-6">相互认识，建立初步连接，分享期望与目标</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-6 font-medium">第2周</td>
+                                <td class="py-4 px-6 font-medium">连接你我他</td>
+                                <td class="py-4 px-6">数字指导与时代故事分享，增进相互了解</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-6 font-medium">第3周</td>
+                                <td class="py-4 px-6 font-medium">智能生活专家</td>
+                                <td class="py-4 px-6">生活技能互换，解决实际问题</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-6 font-medium">第4周</td>
+                                <td class="py-4 px-6 font-medium">我的数字生活秀</td>
+                                <td class="py-4 px-6">短视频创作，记录生活点滴</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-6 font-medium">第5周</td>
+                                <td class="py-4 px-6 font-medium">合作创作周</td>
+                                <td class="py-4 px-6">深度访谈与记录，共同完成创意项目</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-6 font-medium">第6周</td>
+                                <td class="py-4 px-6 font-medium">毕业典礼</td>
+                                <td class="py-4 px-6">成果展示，建立长期互助群，规划未来</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 安全承诺专区 -->
+            <div>
+                <h3 class="text-2xl font-bold text-center mb-2">安全承诺专区</h3>
+                <p class="text-base text-gray-500 mb-8">Safety Commitment Zone</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-id-card text-xl text-primary"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-1">实名信息验证</h4>
+                        <p class="text-xs text-gray-500 mb-2">Real-Name Information Verification</p>
+                        <p class="text-gray-700">
+                            所有参与者需通过实名认证，确保安全可靠的交流环境
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">
+                            All participants need to pass real-name verification to ensure a safe and reliable communication environment
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-12 h-12 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-file-alt text-xl text-secondary"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-1">活动规范指南</h4>
+                        <p class="text-xs text-gray-500 mb-2">Activity Code of Conduct</p>
+                        <p class="text-gray-700">
+                            明确的行为准则和活动规范，保障每位参与者的权益
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Clear codes of conduct and activity norms to protect the rights of each participant
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-12 h-12 bg-success bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-comments text-xl text-success"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-1">定期反馈机制</h4>
+                        <p class="text-xs text-gray-500 mb-2">Regular Feedback Mechanism</p>
+                        <p class="text-gray-700">
+                            建立定期反馈渠道，及时解决问题，持续优化体验
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Establish regular feedback channels to solve problems in a timely manner and continuously optimize the experience
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-shield-alt text-xl text-purple-500"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-1">隐私保护政策</h4>
+                        <p class="text-xs text-gray-500 mb-2">Privacy Protection Policy</p>
+                        <p class="text-gray-700">
+                            严格的隐私保护措施，确保个人信息安全
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Strict privacy protection measures to ensure the security of personal information
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 深远意义页面 -->
+    <section id="impact" class="section-padding bg-gradient-to-br from-green-50 to-teal-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">深远意义</h2>
+            <p class="text-lg text-center text-gray-500 mb-4">Profound Significance</p>
+            <p class="text-lg text-center text-gray-700 mb-6 max-w-3xl mx-auto">
+                代际桥梁项目不仅解决了表面的数字鸿沟问题，更在深层次上促进了代际融合与社会和谐。
+            </p>
+            <p class="text-base text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+                The Intergenerational Bridge project not only addresses the superficial digital divide but also promotes intergenerational integration and social harmony at a deeper level.
+            </p>
+            
+            <div class="flex flex-col lg:flex-row gap-8 mb-16">
+                <!-- 对老年人的提升 -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user-friends text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">对老年人的提升</h3>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-heart text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">心理福祉</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Psychological Well-being</p>
+                                    <p class="text-gray-700">
+                                        减轻孤独感，提升"被需要"的价值感与尊严，增强社会参与感和生活满意度。
+                                    </p>
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Reducing loneliness, enhancing the sense of being needed, dignity, social participation, and life satisfaction.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-brain text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">功能福祉</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Functional Well-being</p>
+                                    <p class="text-gray-700">
+                                        增强独立生活能力，保持认知活跃度，提高数字素养，更好地适应现代社会。
+                                    </p>
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Enhancing independent living abilities, maintaining cognitive activity, improving digital literacy, and better adapting to modern society.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 对青年人的提升 -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user-graduate text-2xl text-secondary"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">对青年人的提升</h3>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-lightbulb text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">心智成长</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Mental Growth</p>
+                                    <p class="text-gray-700">
+                                        获得情感支持与人生智慧，缓解知识焦虑，培养同理心和耐心，形成更全面的人生观。
+                                    </p>
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Gaining emotional support and life wisdom, alleviating knowledge anxiety, cultivating empathy and patience, and forming a more comprehensive outlook on life.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-chart-line text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">能力锻炼</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Ability Development</p>
+                                    <p class="text-gray-700">
+                                        提升沟通、共情能力，深化社会理解，培养责任感，获得宝贵的社会实践经验。
+                                    </p>
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Enhancing communication and empathy abilities, deepening social understanding, cultivating a sense of responsibility, and gaining valuable social practice experience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 用户感言展示 -->
+            <div>
+                <h3 class="text-2xl font-bold text-center mb-2">用户感言</h3>
+                <p class="text-base text-gray-500 mb-8">User Testimonials</p>
+                
+                <!-- 代际互动成功案例 -->
+                <div class="mb-12">
+                    <h4 class="text-2xl font-bold text-center mb-6">中国代际互动成功案例</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-2/5">
+                                    <img src="https://p26-doubao-search-sign.byteimg.com/labis/aa3f11ee57b3709a843a28bdd073d8b5~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781105228&x-signature=K0jKyTVzQnV4GPsA53Vg%2BYOw8nQ%3D" 
+                                         alt="王爷爷的脸谱艺术" 
+                                         class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:w-3/5 p-6">
+                                    <h5 class="text-xl font-bold mb-2">王爷爷的脸谱艺术传承</h5>
+                                    <p class="text-gray-700 mb-4">
+                                        76岁的王爷爷30余年绘制上千个湖南戏曲脸谱，通过我们的"技能传承工作坊"，他找到了一批对传统戏曲文化感兴趣的大学生，将这门传统技艺传授给年轻一代。
+                                    </p>
+                                    <p class="text-primary font-medium">
+                                        "看到年轻人对传统文化的热爱，我感到非常欣慰，这门技艺终于有了传人！"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-2/5">
+                                    <img src="https://p26-doubao-search-sign.byteimg.com/labis/b0bbae2e9ae2ca998bdd4b2dcacbd4bb~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781105228&x-signature=9FKhEnORZs8AKKTHw4p7zSJRiI8%3D" 
+                                         alt="社区志愿服务基地" 
+                                         class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:w-3/5 p-6">
+                                    <h5 class="text-xl font-bold mb-2">大学生社区服务基地</h5>
+                                    <p class="text-gray-700 mb-4">
+                                        通过我们的项目，某大学食品环境系与龙池社区建立了长期合作关系，大学生志愿者定期为社区老人提供生活服务和数字技能培训，同时从老人那里学习传统生活智慧。
+                                    </p>
+                                    <p class="text-primary font-medium">
+                                        "这种双向互动让我们的社区变得更加和谐，老人们得到了帮助，年轻人也收获了成长。"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slider relative">
+                    <div class="testimonial-container overflow-hidden">
+                        <div class="testimonial-track flex transition-transform duration-500" id="testimonialTrack">
+                            <!-- 感言1 -->
+                            <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                                            <i class="fas fa-user-friends text-3xl text-gray-400 flex items-center justify-center w-full h-full"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-bold">王爷爷</h4>
+                                            <p class="text-gray-500 text-sm">72岁，退休教师</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic">
+                                        "教我用微信后，现在我能自己跟孙女视频了，孩子也常来陪我下棋，家里热闹多了。感谢这个项目让我重新找到了生活的乐趣和价值。"
+                                    </p>
+                                    <div class="mt-4 flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 感言2 -->
+                            <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                                            <i class="fas fa-user-friends text-3xl text-gray-400 flex items-center justify-center w-full h-full"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-bold">李奶奶</h4>
+                                            <p class="text-gray-500 text-sm">68岁，退休医生</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic">
+                                        "跟大学生们聊天，感觉自己又年轻了。他们教我发朋友圈，我也跟他们讲从前的故事。这种双向的交流让我感到非常充实和快乐。"
+                                    </p>
+                                    <div class="mt-4 flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 感言3 -->
+                            <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                                            <i class="fas fa-user-graduate text-3xl text-gray-400 flex items-center justify-center w-full h-full"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-bold">张同学</h4>
+                                            <p class="text-gray-500 text-sm">22岁，大学生</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic">
+                                        "从爷爷那里学到了很多人生经验，现在遇到困难时更从容了。教爷爷用手机也很有成就感，这种互相帮助的感觉真的很棒。"
+                                    </p>
+                                    <div class="mt-4 flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 感言4 -->
+                            <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                                            <i class="fas fa-user-graduate text-3xl text-gray-400 flex items-center justify-center w-full h-full"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-bold">刘同学</h4>
+                                            <p class="text-gray-500 text-sm">20岁，大学生</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 italic">
+                                        "参加这个项目后，我对老年人有了全新的认识。他们的智慧和经验真的很宝贵，而且教他们使用手机的过程也让我学会了耐心和理解。"
+                                    </p>
+                                    <div class="mt-4 flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 轮播控制按钮 -->
+                    <button id="prevBtn" class="absolute top-1/2 left-0 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center focus:outline-none z-10">
+                        <i class="fas fa-chevron-left text-primary"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute top-1/2 right-0 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center focus:outline-none z-10">
+                        <i class="fas fa-chevron-right text-primary"></i>
+                    </button>
+                    
+                    <!-- 轮播指示器 -->
+                    <div class="flex justify-center mt-6">
+                        <div class="testimonial-dots flex space-x-2">
+                            <button class="w-3 h-3 rounded-full bg-primary" data-index="0"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300" data-index="3"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 加入我们页面 -->
+    <section id="join" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">加入我们</h2>
+            <p class="text-lg text-center text-gray-500 mb-4">Join Us</p>
+            <p class="text-lg text-center text-gray-700 mb-6 max-w-3xl mx-auto">
+                成为代际桥梁的一员，无论是老年人还是年轻人，都能在这里找到属于自己的价值和温暖。
+            </p>
+            <p class="text-base text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+                Become a member of the Intergenerational Bridge. Whether you are elderly or young, you can find your own value and warmth here.
+            </p>
+            
+            <!-- 志愿者招募 -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-2">志愿者招募</h3>
+                <p class="text-base text-gray-500 mb-8">Volunteer Recruitment</p>
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- 活动执行组 -->
+                    <div class="md:w-1/2">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full">
+                            <div class="bg-primary bg-opacity-10 p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-tools text-xl text-white"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold">活动执行组</h4>
+                                <p class="text-gray-500">Activity Execution Team</p>
+                                </div>
+                            </div>
+                            
+                            <div class="p-6">
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                        <span>负责志愿者的选拔与培训</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                        <span>建立长期可持续的社区生态系统</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                        <span>提供实时支持和问题解决</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                        <span>管理和维护线上小组</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 宣传推广组 -->
+                    <div class="md:w-1/2">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full">
+                            <div class="bg-secondary bg-opacity-10 p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-bullhorn text-xl text-white"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold">宣传推广组</h4>
+                                <p class="text-gray-500">Promotion Team</p>
+                                </div>
+                            </div>
+                            
+                            <div class="p-6">
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
+                                        <span>设计全面的推广策略</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
+                                        <span>制作宣传材料（海报、视频）</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
+                                        <span>管理社交媒体账号</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-secondary mt-1 mr-2"></i>
+                                        <span>扩大项目影响力</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 报名表单 -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-2">报名表单</h3>
+                <p class="text-base text-gray-500 mb-8">Registration Form</p>
+                
+                <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                    <form id="registrationForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="age" class="block text-gray-700 font-medium mb-2">年龄</label>
+                                <input type="number" id="age" name="age" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">联系方式</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="role" class="block text-gray-700 font-medium mb-2">选择角色</label>
+                            <select id="role" name="role" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                <option value="">请选择...</option>
+                                <option value="executive">活动执行组</option>
+                                <option value="promotion">宣传推广组</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="availability" class="block text-gray-700 font-medium mb-2">可用时间</label>
+                            <textarea id="availability" name="availability" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="skills" class="block text-gray-700 font-medium mb-2">特长技能</label>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="skills" value="digital" class="mr-2">
+                                    <span>数字技术</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="skills" value="communication" class="mr-2">
+                                    <span>沟通能力</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="skills" value="planning" class="mr-2">
+                                    <span>活动策划</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="skills" value="design" class="mr-2">
+                                    <span>设计创作</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="skills" value="writing" class="mr-2">
+                                    <span>文案写作</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="skills" value="other" class="mr-2">
+                                    <span>其他</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="motivation" class="block text-gray-700 font-medium mb-2">参与动机</label>
+                            <textarea id="motivation" name="motivation" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="expectation" class="block text-gray-700 font-medium mb-2">期望收获</label>
+                            <textarea id="expectation" name="expectation" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-paper-plane mr-2"></i>提交报名
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- 支持与资源 -->
+            <div>
+                <h3 class="text-2xl font-bold text-center mb-2">支持与资源</h3>
+                <p class="text-base text-gray-500 mb-8">Support and Resources</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 资金支持 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-money-bill-wave text-2xl text-green-500"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-2">资金支持</h4>
+                        <p class="text-sm text-gray-500 text-center mb-4">Financial Support</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-green-500 mt-1.5 mr-2"></i>
+                                <span>文创产品销售（数字故事视频、电子相册）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-green-500 mt-1.5 mr-2"></i>
+                                <span>合作机构赞助</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 人力资源 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-users-cog text-2xl text-blue-500"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-2">人力资源</h4>
+                        <p class="text-sm text-gray-500 text-center mb-4">Human Resources</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-blue-500 mt-1.5 mr-2"></i>
+                                <span>大学志愿者精准招募</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-blue-500 mt-1.5 mr-2"></i>
+                                <span>社区工作人员协作</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-blue-500 mt-1.5 mr-2"></i>
+                                <span>跨平台招募推广</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 技术支持 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-laptop-code text-2xl text-purple-500"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-2">技术支持</h4>
+                        <p class="text-sm text-gray-500 text-center mb-4">Technical Support</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-purple-500 mt-1.5 mr-2"></i>
+                                <span>数字技能培训资源</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-xs text-purple-500 mt-1.5 mr-2"></i>
+                                <span>现有平台功能利用</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- 联系方式 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">联系方式</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>genbond@example.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>+86 123-4567-8900</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>XX大学社会服务中心</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 快速链接 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="#problems" class="hover:text-primary transition-colors">问题与挑战</a></li>
+                        <li><a href="#solutions" class="hover:text-primary transition-colors">解决方案</a></li>
+                        <li><a href="#impact" class="hover:text-primary transition-colors">项目意义</a></li>
+                        <li><a href="#join" class="hover:text-primary transition-colors">加入我们</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 社交媒体 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">社交媒体</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-weixin mr-2"></i>
+                            <span>微信公众号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-tiktok mr-2"></i>
+                            <span>抖音账号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-weibo mr-2"></i>
+                            <span>小红书</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-bilibili mr-2"></i>
+                            <span>B站</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 合作伙伴 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">合作伙伴</h4>
+                    <ul class="space-y-2">
+                        <li>XX大学志愿者协会</li>
+                        <li>社区老年大学</li>
+                        <li>地方公益组织</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2023 代际桥梁. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg text-white opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 返回顶部按钮
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 字体大小控制
+        let fontSize = 16; // 默认字体大小（像素）
+        
+        document.getElementById('font-increase').addEventListener('click', function() {
+            if (fontSize < 20) {
+                fontSize += 2;
+                document.documentElement.style.fontSize = fontSize + 'px';
+                localStorage.setItem('fontSize', fontSize);
+            }
+        });
+        
+        document.getElementById('font-decrease').addEventListener('click', function() {
+            if (fontSize > 12) {
+                fontSize -= 2;
+                document.documentElement.style.fontSize = fontSize + 'px';
+                localStorage.setItem('fontSize', fontSize);
+            }
+        });
+        
+        document.getElementById('font-reset').addEventListener('click', function() {
+            fontSize = 16;
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
+        });
+        
+        // 加载保存的字体大小设置
+        window.addEventListener('load', function() {
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                fontSize = parseInt(savedFontSize);
+                document.documentElement.style.fontSize = fontSize + 'px';
+            }
+        });
+        
+        // 数字计数器动画
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200; // 动画速度
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // 监听元素进入视口
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('counter')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.counter').forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // 轮播图功能
+        let currentSlide = 0;
+        const track = document.getElementById('testimonialTrack');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dots button');
+        const slideWidth = slides[0].offsetWidth;
+        const totalSlides = slides.length;
+        
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            currentSlide = index;
+            
+            // 计算移动距离
+            let translateX = -currentSlide * slideWidth;
+            
+            // 响应式调整
+            if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+                // 平板视图，显示2个slide
+                translateX = -currentSlide * (slideWidth / 2);
+            } else if (window.innerWidth >= 1024) {
+                // 桌面视图，显示3个slide
+                translateX = -currentSlide * (slideWidth / 3);
+            }
+            
+            track.style.transform = `translateX(${translateX}px)`;
+            
+            // 更新指示器
+            dots.forEach((dot, i) => {
+                if (i === currentSlide) {
+                    dot.classList.add('bg-primary');
+                    dot.classList.remove('bg-gray-300');
+                } else {
+                    dot.classList.remove('bg-primary');
+                    dot.classList.add('bg-gray-300');
+                }
+            });
+        }
+        
+        // 下一张幻灯片
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+        });
+        
+        // 上一张幻灯片
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            goToSlide(currentSlide - 1);
+        });
+        
+        // 点击指示器切换幻灯片
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+        });
+        
+        // 自动轮播
+        let autoplayInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000);
+        
+        // 鼠标悬停时暂停自动轮播
+        document.querySelector('.testimonial-slider').addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+        
+        // 鼠标离开时恢复自动轮播
+        document.querySelector('.testimonial-slider').addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000);
+        });
+        
+        // 窗口大小变化时重新计算轮播
+        window.addEventListener('resize', () => {
+            goToSlide(currentSlide);
+        });
+        
+        // 表单提交处理
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(this);
+            const formValues = {};
+            
+            formData.forEach((value, key) => {
+                if (key === 'skills') {
+                    if (!formValues[key]) formValues[key] = [];
+                    formValues[key].push(value);
+                } else {
+                    formValues[key] = value;
+                }
+            });
+            
+            // 模拟表单提交
+            alert('感谢您的报名！我们会尽快与您联系。');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代际桥梁 - 老年人与青年互助平台</title>
+    <style>
+        /* 全局样式 - 使用暖色调主题 */
+        :root {
+            --primary-color: #FFA726;      /* 暖橙色 - 主要强调色 */
+            --secondary-color: #1565C0;     /* 深蓝色 - 次要强调色 */
+            --light-gray: #f5f5f5;          /* 浅灰色背景 */
+            --dark-gray: #333;              /* 深灰色文字 */
+            --font-size: 16px;
+            --warm-gradient: linear-gradient(135deg, #FFA726 0%, #FF9800 100%);
+            --cool-gradient: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);
+            --elder-gradient: linear-gradient(135deg, #78909C 0%, #607D8B 100%);
+            --youth-gradient: linear-gradient(135deg, #42A5F5 0%, #2196F3 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: var(--font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: white;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 导航栏 - 使用暖色强调 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--warm-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--warm-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
+        }
+        
+        .font-controls {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .font-btn {
+            background: var(--cool-gradient);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-left: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .font-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* 首页样式 - 使用暖色调背景 */
+        .hero {
+            background: linear-gradient(rgba(21, 101, 192, 0.85), rgba(255, 167, 38, 0.8)), 
+                        url('https://images.unsplash.com/photo-1534237710431-e2fc698436d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--warm-gradient);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 167, 38, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 167, 38, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            border-color: white;
+        }
+        
+        /* 核心价值部分 */
+        .features {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--warm-gradient);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--warm-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* 问题页面样式 - 使用代际颜色 */
+        .problem-section {
+            padding: 100px 0 50px;
+        }
+        
+        .split-layout {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 50px 0;
+            gap: 30px;
+        }
+        
+        .split-column {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .split-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .elder-column {
+            background: linear-gradient(135deg, rgba(120, 144, 156, 0.1) 0%, rgba(96, 125, 139, 0.05) 100%);
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .youth-column {
+            background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%);
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .column-header {
+            margin-bottom: 25px;
+            color: var(--dark-gray);
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .elder-column .column-header {
+            color: #607D8B;
+        }
+        
+        .youth-column .column-header {
+            color: #42A5F5;
+        }
+        
+        .challenge-list, .strength-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .challenge-list li, .strength-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .challenge-list li:before {
+            content: "•";
+            color: #FF5252;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .strength-list li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .summary-graphic {
+            text-align: center;
+            margin: 70px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 600px;
+            border: 3px dashed var(--primary-color);
+        }
+        
+        .puzzle-graphic {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .puzzle-piece {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .puzzle-piece:hover {
+            transform: scale(1.1);
+        }
+        
+        .puzzle-elder {
+            background: var(--elder-gradient);
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+        }
+        
+        .puzzle-youth {
+            background: var(--youth-gradient);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 30% 70%);
+            margin-left: -20px;
+        }
+        
+        .summary-graphic p {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: var(--warm-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 30px;
+            background-color: rgba(255, 167, 38, 0.1);
+        }
+        
+        /* 解决方案页面样式 */
+        .solution-section {
+            padding: 100px 0 50px;
+        }
+        
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            margin: 70px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .process-step {
+            text-align: center;
+            flex: 1;
+            min-width: 220px;
+            padding: 25px;
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .process-step:not(:last-child):after {
+            content: "→";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .process-step:after {
+                display: none;
+            }
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--warm-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 167, 38, 0.4);
+        }
+        
+        .process-step h3 {
+            color: var(--secondary-color);
+            margin: 15px 0;
+            font-size: 1.3rem;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .activity-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .activity-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .safety-section {
+            background: linear-gradient(135deg, rgba(21, 101, 192, 0.1) 0%, rgba(255, 167, 38, 0.05) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 70px 0;
+            text-align: center;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .safety-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .safety-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 深远意义页面样式 */
+        .impact-section {
+            padding: 100px 0 50px;
+        }
+        
+        .impact-columns {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 70px 0;
+            gap: 30px;
+        }
+        
+        .impact-column {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .impact-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .impact-elder {
+            background: linear-gradient(135deg, rgba(120, 144, 156, 0.1) 0%, rgba(96, 125, 139, 0.05) 100%);
+            border-top: 5px solid #78909C;
+        }
+        
+        .impact-youth {
+            background: linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%);
+            border-top: 5px solid #42A5F5;
+        }
+        
+        .impact-column h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .impact-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .impact-column li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .impact-column li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .impact-elder li:before {
+            background: #78909C;
+        }
+        
+        .impact-youth li:before {
+            background: #42A5F5;
+        }
+        
+        .testimonials {
+            margin: 80px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 167, 38, 0.1) 0%, rgba(21, 101, 192, 0.05) 100%);
+            border-radius: 15px;
+        }
+        
+        .testimonials h3 {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+            border-left: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        /* 加入我们页面样式 */
+        .join-section {
+            padding: 100px 0 50px;
+        }
+        
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 70px 0;
+        }
+        
+        .role-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .role-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .role-card p {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .role-card .btn {
+            background: var(--cool-gradient);
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
+        }
+        
+        .role-card .btn:hover {
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 40px;
+            margin: 70px 0;
+            border-top: 5px solid var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 10px 0;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        /* 页脚样式 - 使用深蓝色背景 */
+        footer {
+            background: var(--cool-gradient);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .process-step:after {
+                display: none;
+            }
+            
+            .features-grid,
+            .activities-grid,
+            .role-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .split-layout,
+            .impact-columns {
+                flex-direction: column;
+            }
+            
+            .summary-graphic {
+                padding: 30px 20px;
+                margin: 40px auto;
+            }
+            
+            .summary-graphic p {
+                font-size: 1.1rem;
+            }
+            
+            .font-controls {
+                margin-left: 10px;
+            }
+        }
+        
+        /* 页面隐藏/显示 */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        #index-page {
+            display: block;
+        }
+        
+        /* 标题样式统一 */
+        h2 {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">代际桥梁</div>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('index-page')">首页</a></li>
+                    <li><a href="#" onclick="showPage('problem-page')">我们关注的问题</a></li>
+                    <li><a href="#" onclick="showPage('solution-page')">我们的解决方案</a></li>
+                    <li><a href="#" onclick="showPage('impact-page')">深远意义</a></li>
+                    <li><a href="#" onclick="showPage('join-page')">加入我们</a></li>
+                </ul>
+                <div class="font-controls">
+                    <button class="font-btn" onclick="changeFontSize('increase')">A+</button>
+                    <button class="font-btn" onclick="changeFontSize('decrease')">A-</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页 -->
+    <section id="index-page" class="page active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>连接时光，交换智慧</h1>
+                <p>一个跨越数字鸿沟、消除代际隔离的温暖社区。在这里，陪伴与成长是双向的礼物。</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn" onclick="showPage('problem-page')">了解问题与挑战</a>
+                    <a href="#" class="btn btn-outline" onclick="showPage('solution-page')">探索我们的解决方案</a>
+                </div>
+            </div>
+        </div>
+        
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>双向情感陪伴</h3>
+                        <p>对抗孤独与焦虑，建立真诚的情感连接，让温暖在代际间流动。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>知识技能交换</h3>
+                        <p>数字反哺与人生指导相结合，互相学习共同成长，实现智慧传承。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>跨代社群</h3>
+                        <p>构建支持性社交网络，打破代际隔阂，创造包容温暖的社区。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- 我们关注的问题页面 -->
+    <section id="problem-page" class="page">
+        <div class="container problem-section">
+            <h2>我们正在连接的两端</h2>
+            
+            <div class="split-layout">
+                <div class="split-column elder-column">
+                    <h3 class="column-header">👴 银发智慧，不应被时代隔离</h3>
+                    
+                    <h4>面临的挑战：</h4>
+                    <ul class="challenge-list">
+                        <li><strong>心理孤独：</strong>子女离家，缺乏日常情感交流，价值感缺失</li>
+                        <li><strong>数字鸿沟：</strong>对扫码支付、线上挂号等无所适从，产生被抛弃感和社交孤立</li>
+                    </ul>
+                    
+                    <h4>他们所拥有的宝藏：</h4>
+                    <ul class="strength-list">
+                        <li><strong>丰富的人生阅历：</strong>可对生活、学业、价值观提供指导</li>
+                        <li><strong>无条件的关爱：</strong>提供类似祖辈的、不带有评判性的情感锚点与归属感</li>
+                    </ul>
+                </div>
+                
+                <div class="split-column youth-column">
+                    <h3 class="column-header">👦 青春力量，也需要经验灯塔</h3>
+                    
+                    <h4>面临的挑战：</h4>
+                    <ul class="challenge-list">
+                        <li><strong>成长迷茫：</strong>在学业、职业、人际关系上感到困惑与焦虑，缺乏长远视角</li>
+                        <li><strong>竞争压力：</strong>快节奏、高成本生活带来的疲惫与不安，缺乏非功利性支持网络</li>
+                    </ul>
+                    
+                    <h4>他们所拥有的宝藏：</h4>
+                    <ul class="strength-list">
+                        <li><strong>数字素养：</strong>熟悉电子设备，能通过"数字反哺"帮助老年人</li>
+                        <li><strong>新鲜陪伴：</strong>简单的问候、耐心的倾听，就能带来巨大的情感慰藉</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="summary-graphic">
+                <div class="puzzle-graphic">
+                    <div class="puzzle-piece puzzle-elder">👴</div>
+                    <div class="puzzle-piece puzzle-youth">👦</div>
+                </div>
+                <p>双向情感陪伴 + 知识技能交换 = 1+1>2 的和谐互惠</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我们的解决方案页面 -->
+    <section id="solution-page" class="page">
+        <div class="container solution-section">
+            <h2>我们如何搭建这座桥？</h2>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>注册与建档</h3>
+                    <p>填写兴趣、需求与技能</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>智能匹配</h3>
+                    <p>根据档案推荐伙伴或活动</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>参与互动</h3>
+                    <p>参加线上线下丰富活动</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>分享反馈</h3>
+                    <p>分享故事，优化体验</p>
+                </div>
+            </div>
+            
+            <h3>活动形式</h3>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">📱</div>
+                    <h4>数字门诊</h4>
+                    <p>年轻人一对一辅导老年人使用智能手机解决日常难题</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🍵</div>
+                    <h4>人生茶话会</h4>
+                    <p>老年人作为主讲人，分享特定主题的人生故事与智慧</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">📚</div>
+                    <h4>共学小组</h4>
+                    <p>一起学习摄影、书法、短视频剪辑等新技能</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🤝</div>
+                    <h4>长期伙伴</h4>
+                    <p>经过培训和匹配，建立长期、稳定的双向陪伴关系</p>
+                </div>
+            </div>
+            
+            <div class="safety-section">
+                <h3>安全承诺</h3>
+                <p>我们重视每位参与者的安全，通过实名信息验证、活动规范指南及定期反馈机制，为真诚的交流保驾护航。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 深远意义页面 -->
+    <section id="impact-page" class="page">
+        <div class="container impact-section">
+            <h2>改变的涟漪：当我们连接彼此</h2>
+            
+            <div class="impact-columns">
+                <div class="impact-column impact-elder">
+                    <h3>👴 对老年人的提升</h3>
+                    <ul>
+                        <li><strong>心理福祉：</strong> 减轻孤独感，提升"被需要"的价值感与尊严</li>
+                        <li><strong>功能福祉：</strong> 增强独立生活能力，保持认知活跃度</li>
+                    </ul>
+                </div>
+                
+                <div class="impact-column impact-youth">
+                    <h3>👦 对青年人的提升</h3>
+                    <ul>
+                        <li><strong>心智成长：</strong> 获得情感支持与人生智慧，缓解知识焦虑</li>
+                        <li><strong>能力锻炼：</strong> 提升沟通、共情能力，深化社会理解，培养责任感</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <h3>用户感言</h3>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">教我用微信后，现在我能自己跟孙女视频了，孩子也常来陪我下棋，家里热闹多了。</p>
+                    <p class="testimonial-author">— 王爷爷</p>
+                </div>
+                
+                <div class="testim
